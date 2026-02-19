@@ -44,21 +44,20 @@
     
     <!-- Add the build section and plugins here -->
     <build>
+      
         <plugins>
-            <!-- JaCoCo Maven Plugin configuration -->
+            <!-- JaCoCo Maven Plugin -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
-                    <!-- Prepare the agent during the initialize phase -->
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <!-- Generate the report after the test phase -->
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
@@ -67,11 +66,9 @@
                         </goals>
                     </execution>
                 </executions>
-           <plugin>
-    <groupId>org.jacoco</groupId>
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.13</version>
-</plugin>
+            </plugin>
+        </plugins>
+    
 
     </build>
 
