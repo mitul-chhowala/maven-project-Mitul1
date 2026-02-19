@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.houari</groupId>
+    <artifactId>Calculator</artifactId>
+    <version>2.0.0-${maven.build.timestamp}</version>
+
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <jackson-dataformat-yaml.version>2.14.2</jackson-dataformat-yaml.version>
+        <junit-jupiter-params.version>5.9.2</junit-jupiter-params.version>
+        <!-- Define JaCoCo version as a property for easy management -->
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson-dataformat-yaml.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter-params.version}</version>
+            <scope>test</scope>
+        </dependency>
+		
+    </dependencies>
+	
+	<distributionManagement>
+			<repository>
+			   <id>custom-maven-ga</id>
+			   <url>http://192.168.0.32:8081/repository/calculator_deploy_proj/</url>
+			</repository>
+	</distributionManagement>
+    
+    <!-- Add the build section and plugins here -->
+    <build>
+        <plugins>
+            <!-- JaCoCo Maven Plugin configuration -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <!-- Prepare the agent during the initialize phase -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- Generate the report after the test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Note: You may also need the maven-surefire-plugin if you were using JUnit 4, 
+            but for JUnit 5, default Maven versions often handle it automatically. -->
+        </plugins>
+    </build>
+
+</project>
