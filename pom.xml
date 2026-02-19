@@ -67,10 +67,12 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- Note: You may also need the maven-surefire-plugin if you were using JUnit 4, 
-            but for JUnit 5, default Maven versions often handle it automatically. -->
-        </plugins>
+           <plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.13</version>
+</plugin>
+
     </build>
 
 </project>
