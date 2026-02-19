@@ -35,12 +35,12 @@
 		
     </dependencies>
 	
-	<distributionManagement>
+	<!-- <distributionManagement>
 			<repository>
 			   <id>custom-maven-ga</id>
 			   <url>http://192.168.0.32:8081/repository/calculator_deploy_proj/</url>
 			</repository>
-	</distributionManagement>
+	</distributionManagement> -->
     
     <!-- Add the build section and plugins here -->
     <build>
